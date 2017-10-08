@@ -41,9 +41,7 @@ public class DataHandler implements IAthleteUpdateHandler{
         }
         athletes = processBehavior.process(athletes, athleteUpdate);
 
-        // test
-        Athlete ath = (Athlete) athletes.get(1);
-//        System.out.println(athleteUpdate.toString());
+        System.out.println(athleteUpdate.toString());
     }
 
     // getters and Setters

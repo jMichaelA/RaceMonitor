@@ -10,6 +10,17 @@ public class Athlete implements ISubject{
     private ArrayList<State> pastState;
     private ArrayList<IObserver> observer;
 
+    public Athlete(Integer bibNumber, Integer age, String firstName, String lastName, String gender) {
+        this.bibNumber = bibNumber;
+        this.age = age;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+
+        observer = new ArrayList<>();
+        pastState = new ArrayList<>();
+    }
+
     public Athlete(Integer bibNumber, Integer age, String firstName, String lastName, String gender, State state) {
         this.bibNumber = bibNumber;
         this.age = age;
