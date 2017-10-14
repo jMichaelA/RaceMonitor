@@ -5,7 +5,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ObserverGui extends Application{
+import java.util.HashMap;
+
+public class ObserverGui extends Application implements IObserver{
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -39,5 +41,15 @@ public class ObserverGui extends Application{
         stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void update(Athlete athlete) {
+
+    }
+
+    @Override
+    public void update(HashMap<Integer, Athlete> athlete) {
+
     }
 }

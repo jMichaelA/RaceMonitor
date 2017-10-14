@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -27,6 +28,11 @@ public class Email implements IObserver{
     @Override
     public void update(Athlete athlete) {
         // right here create a thread that every so many minutes sends an email
+    }
+
+    @Override
+    public void update(HashMap<Integer, Athlete> athlete) {
+
     }
 
     public void sendEmail(String message, String subject){

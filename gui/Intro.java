@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,18 +13,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Intro extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
         Button btn = new Button("Create Event");
         btn.getStyleClass().addAll("create-event-btn");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("gasp");
-            }
-        });
 
         // button and event with lambda expression
 //        Button exit = new Button("Exit");
@@ -42,14 +39,19 @@ public class Intro extends Application {
 
         TextField raceNameTxtFld = new TextField();
         raceNameTxtFld.getStyleClass().addAll("text-field");
-        /*** TODO implement saving the raceNameTxtFld data ***/
 
         Text simText = new Text("Simulator data:  ");
         simText.getStyleClass().addAll("text-label");
 
         TextField simTxtFld = new TextField();
         simTxtFld.getStyleClass().addAll("text-field");
-        /*** TODO implement saving the simTxtFld data ***/
+
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                startRace(raceNameTxtFld.getText(), simTxtFld.getText());
+            }
+        });
 
         VBox vboxBody = new VBox();
         vboxBody.getStyleClass().addAll("vbox", "body");
@@ -77,8 +79,21 @@ public class Intro extends Application {
         // pane width, height
         Scene scene = new Scene(vboxBody, 500, 300);
         scene.getStylesheets().add("assets/app.css");
-        stage.setTitle("Hello World");
+        stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void startRace(String name, String fileName){
+        try {
+            Race race = new Race(name, fileName);
+            Stage stage = new Stage();
+            race.start(stage);
+
+        } catch (IOException e) {
+            System.out.println("Failed to create new Window.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
