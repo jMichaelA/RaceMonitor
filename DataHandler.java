@@ -72,4 +72,11 @@ public class DataHandler implements IAthleteUpdateHandler, ISubject{
         this.athletes = athletes;
     }
 
+    public ArrayList<IObserver> getObserver() {
+        return observer;
+    }
+
+    public void setObserver(ArrayList<IObserver> observer) {
+        this.observer = observer;
+    }
 }
